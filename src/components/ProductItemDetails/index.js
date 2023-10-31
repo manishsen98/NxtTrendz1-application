@@ -19,8 +19,6 @@ const apiStatusConstants = {
 
 const ProductItemDetails = () => {
  const {addCartItem} = useContext(CartContext)
- console.log(addCartItem)  
- console.log(addCart)
   const { id } = useParams();
 
   const [productData, setProductData] = useState({});
