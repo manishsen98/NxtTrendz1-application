@@ -1,5 +1,5 @@
 import { BrowserRouter,Route, Routes } from "react-router-dom";
-import {Children, useState} from "react" 
+import { useState} from "react" 
 import LoginForm from "./components/LoginForm";
 import Home from "./components/Home";
 import Cart from "./components/Cart"; 
@@ -14,16 +14,13 @@ function App(props) {
   const [cartList, setCartList] = useState([])
   const addCartItem = (product) => {
     setCartList((prevCartList) => [...prevCartList, product] )
-    console.log(cartList)
   }
-  
 
   return (
     <BrowserRouter>
     <CartContext.Provider 
      value={{cartList, addCartItem}}>
       {props.Children}
-   </CartContext.Provider>
     <Routes>
       <Route element = {<PrivateComponet/>}  >
       <Route path="/" element = {<Home />} />
@@ -34,7 +31,7 @@ function App(props) {
       <Route path="*" element = {<NotFound/>}  />
       <Route path="/login" element = {<LoginForm/>} />
       </Routes>
-      
+      </CartContext.Provider>
     </BrowserRouter>
   );
 }
